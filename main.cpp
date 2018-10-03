@@ -38,6 +38,11 @@ int main() {
 
     ListedStack<Shape *> listedStack;
 
+    try {
+        listedStack.pop();
+    }
+    catch (const EmptyStackException) {}
+
     for (Shape *shape : shapes) {
         cout << *shape << endl << endl;
         listedStack.push(shape);
@@ -46,7 +51,7 @@ int main() {
     auto poped_shape = listedStack.pop();
 
     if (shapes.back() != poped_shape) {
-        throw new string;
+        return 1;
     }
 
     size_t size = 0;
@@ -56,7 +61,13 @@ int main() {
     }
 
     if (size != shapes.size() - 1) {
-        throw new string;
+        return 1;
+    }
+
+    for (int i = 0; i < 100000000; ++i) {
+        try {
+            listedStack.push(text);
+        } catch (const MemoryAllocException) {}
     }
 
     return 0;

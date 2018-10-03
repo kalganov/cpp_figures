@@ -5,6 +5,9 @@
 #ifndef SHAPES_LISTEDSTACK_H
 #define SHAPES_LISTEDSTACK_H
 
+#include "../exceptions/EmptyStackException.h"
+#include "../exceptions/MemoryAllocException.h"
+
 template<class T>
 class ListedStack {
 private:
@@ -66,16 +69,20 @@ ListedStack<T>::ListedStack() : head(nullptr) {}
 
 template<class T>
 void ListedStack<T>::push(const T data) {
-    Node *pv = new Node;
-    pv->data = data;
-    pv->next_node = head;
-    head = pv;
+    try {
+        Node *pv = new Node;
+        pv->data = data;
+        pv->next_node = head;
+        head = pv;
+    } catch (...) {
+        throw MemoryAllocException();
+    }
 }
 
 template<class T>
 T ListedStack<T>::pop() {
     if (isEmpty()) {
-        return nullptr;
+        throw EmptyStackException();
     }
     T temp = head->data;
     Node *pv = head;
