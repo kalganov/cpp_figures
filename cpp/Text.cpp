@@ -13,7 +13,41 @@ double Text::get_perimetr() const {
 }
 
 string Text::get_info() const {
+    return text + "\n" +
+           std::to_string(center.getX()) + "," + std::to_string(center.getY()) + "\n" +
+           std::to_string(angle);
+}
+
+Text::Text(const string &text, const Point &center) : text(text), center(center), angle(0.0) {}
+
+const Point &Text::getCenter() const {
+    return center;
+}
+
+void Text::setCenter(const Point &center) {
+    Text::center = center;
+}
+
+double Text::getAngle() const {
+    return angle;
+}
+
+void Text::setAngle(double angle) {
+    Text::angle = angle;
+}
+
+const string &Text::getText() const {
     return text;
 }
 
-Text::Text(const string &text) : text(text) {}
+void Text::setText(const string &text) {
+    Text::text = text;
+}
+
+void Text::move(Point point) {
+    center += point;
+}
+
+void Text::rotate(double angle) {
+    this->angle += angle;
+}

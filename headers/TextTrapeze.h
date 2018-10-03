@@ -14,6 +14,10 @@ class TextTrapeze : public Trapeze, public Text {
 public:
     TextTrapeze(const array<Point, 4> &points, const string &text);
 
+    void move(Point point) override;
+
+    void rotate(double angle) override;
+
     double get_square() const override;
 
     double get_perimetr() const override;

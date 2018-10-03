@@ -9,7 +9,7 @@
 
 class Text : virtual public Shape {
 public:
-    Text(const string &text);
+    Text(const string &text, const Point &center);
 
     double get_square() const override;
 
@@ -17,7 +17,25 @@ public:
 
     string get_info() const override;
 
+    const Point &getCenter() const;
+
+    void setCenter(const Point &center);
+
+    double getAngle() const;
+
+    void setAngle(double angle);
+
+    const string &getText() const;
+
+    void setText(const string &text);
+
+    void move(Point point) override;
+
+    void rotate(double angle) override;
+
 protected:
+    Point center;
+    double angle;
     string text;
 };
 

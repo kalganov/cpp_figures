@@ -16,12 +16,23 @@ public:
 
     double get_perimetr() const override;
 
+    void move(Point point) override;
+
+    void rotate(double angle) override;
+
     string get_info() const override;
 
     Trapeze(const array<Point, 4> &points);
 
 protected:
     array<Point, 4> points;
+
+    Point get_center();
+
+public:
+    const array<Point, 4> &getPoints() const;
+
+    void setPoints(const array<Point, 4> &points);
 };
 
 

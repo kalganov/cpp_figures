@@ -15,6 +15,12 @@ public:
 
     friend double length(const Point &p1, const Point &p2);
 
+    friend Point operator+(const Point &p1, const Point &p2);
+
+    friend Point operator+=(const Point &p1, const Point &p2);
+
+    friend Point operator/(const Point &p1, const int i);
+
     double getX() const;
 
     double getY() const;

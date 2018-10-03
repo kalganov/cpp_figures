@@ -26,3 +26,34 @@ string Trapeze::get_info() const {
 }
 
 Trapeze::Trapeze(const array<Point, 4> &points) : points(points) {}
+
+void Trapeze::move(Point point) {
+    for (auto shape_point : points) {
+        shape_point += point;
+    }
+}
+
+void Trapeze::rotate(double angle) {
+    Point center = get_center();
+
+    for (auto shape_point : points) {
+        shape_point =
+                Point((shape_point.getX() - center.getX()) * cos(angle) -
+                      (shape_point.getY() - center.getY()) * sin(angle) + center.getX(),
+                      (shape_point.getX() - center.getX()) * sin(angle) +
+                      (shape_point.getY() - center.getY()) * cos(angle) + center.getY()
+                );
+    }
+}
+
+Point Trapeze::get_center() {
+    return (points[0] + points[1] + points[2] + points[3]) / 4;
+}
+
+const array<Point, 4> &Trapeze::getPoints() const {
+    return points;
+}
+
+void Trapeze::setPoints(const array<Point, 4> &points) {
+    Trapeze::points = points;
+}

@@ -19,6 +19,15 @@ public:
 
     string get_info() const override;
 
+    const array<Point, 3> &getPoints() const;
+
+    void setPoints(const array<Point, 3> &points);
+
+    void move(Point point) override;
+
+    void rotate(double angle) override;
+
+public:
     Triangle(const array<Point, 3> &points);
 
 private:

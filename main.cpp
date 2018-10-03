@@ -26,7 +26,7 @@ int main() {
     trapeze_points[2] = Point(10.0, 5.0);
     trapeze_points[3] = Point(15.0, 0.0);
 
-    Shape *text = new Text(simple_text);
+    Shape *text = new Text(simple_text, Point(0, 0));
     Shape *triangle = new Triangle(triangle_points);
     Shape *trapeze = new Trapeze(trapeze_points);
     Shape *textTrapeze = new TextTrapeze(trapeze_points, simple_text);

@@ -4,7 +4,8 @@
 
 #include "../headers/TextTrapeze.h"
 
-TextTrapeze::TextTrapeze(const array<Point, 4> &points, const string &text) : Trapeze(points), Text(text) {}
+TextTrapeze::TextTrapeze(const array<Point, 4> &points, const string &text) : Trapeze(points),
+                                                                              Text(text, get_center()) {}
 
 double TextTrapeze::get_square() const {
     return Trapeze::get_square();
@@ -20,4 +21,14 @@ string TextTrapeze::get_info() const {
            std::to_string(points[2].getX()) + "," + std::to_string(points[2].getY()) + "\n" +
            std::to_string(points[3].getX()) + "," + std::to_string(points[3].getY()) + "\n" +
            text;
+}
+
+void TextTrapeze::move(Point point) {
+    Trapeze::move(point);
+    Text::move(point);
+}
+
+void TextTrapeze::rotate(double angle) {
+    Trapeze::rotate(angle);
+    Text::rotate(angle);
 }

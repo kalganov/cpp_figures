@@ -21,3 +21,30 @@ string Triangle::get_info() const {
 }
 
 Triangle::Triangle(const array<Point, 3> &points) : points(points) {}
+
+void Triangle::move(Point point) {
+    for (auto shape_point : points) {
+        shape_point += point;
+    }
+}
+
+void Triangle::rotate(double angle) {
+    Point center = (points[0] + points[1] + points[2]) / 3;
+
+    for (auto shape_point : points) {
+        shape_point =
+                Point((shape_point.getX() - center.getX()) * cos(angle) -
+                      (shape_point.getY() - center.getY()) * sin(angle) + center.getX(),
+                      (shape_point.getX() - center.getX()) * sin(angle) +
+                      (shape_point.getY() - center.getY()) * cos(angle) + center.getY()
+                );
+    }
+}
+
+const array<Point, 3> &Triangle::getPoints() const {
+    return points;
+}
+
+void Triangle::setPoints(const array<Point, 3> &points) {
+    Triangle::points = points;
+}
